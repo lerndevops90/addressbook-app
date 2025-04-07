@@ -1,0 +1,17 @@
+name: Run the Steps on a Container
+on: 
+ - push
+ - workflow_dispatch
+jobs: 
+  job1:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/library/maven:3.9.6
+    steps:
+     - name: checkout code 
+       uses: actions/checkout@v4
+     - name: run a command inside the container 
+       run: cat /etc/os-release 
+     - name: package 
+       run: mvn package
+    
